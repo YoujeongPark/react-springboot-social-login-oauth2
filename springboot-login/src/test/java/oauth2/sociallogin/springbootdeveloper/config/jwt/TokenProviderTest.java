@@ -1,6 +1,8 @@
 package oauth2.sociallogin.springbootdeveloper.config.jwt;
 
 import io.jsonwebtoken.Jwts;
+import oauth2.sociallogin.springbootdeveloper.config.jwt.JwtProperties;
+import oauth2.sociallogin.springbootdeveloper.config.jwt.TokenProvider;
 import oauth2.sociallogin.springbootdeveloper.domain.User;
 import oauth2.sociallogin.springbootdeveloper.repository.UserRepository;
 import org.junit.jupiter.api.DisplayName;

@@ -8,7 +8,7 @@ import oauth2.sociallogin.springbootdeveloper.domain.RefreshToken;
 import oauth2.sociallogin.springbootdeveloper.domain.User;
 import oauth2.sociallogin.springbootdeveloper.repository.RefreshTokenRepository;
 import oauth2.sociallogin.springbootdeveloper.service.UserService;
-import oauth2.sociallogin.springbootdeveloper.util.CookieUtil;
+import oauth2.sociallogin.springbootdeveloper.util.CookieUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
@@ -62,8 +62,8 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
     private void addRefreshTokenToCookie(HttpServletRequest request, HttpServletResponse response, String refreshToken) {
         int cookieMaxAge = (int) REFRESH_TOKEN_DURATION.toSeconds();
 
-        CookieUtil.deleteCookie(request, response, REFRESH_TOKEN_COOKIE_NAME);
-        CookieUtil.addCookie(response, REFRESH_TOKEN_COOKIE_NAME, refreshToken, cookieMaxAge);
+        CookieUtils.deleteCookie(request, response, REFRESH_TOKEN_COOKIE_NAME);
+        CookieUtils.addCookie(response, REFRESH_TOKEN_COOKIE_NAME, refreshToken, cookieMaxAge);
     }
 
     private void clearAuthenticationAttributes(HttpServletRequest request, HttpServletResponse response) {

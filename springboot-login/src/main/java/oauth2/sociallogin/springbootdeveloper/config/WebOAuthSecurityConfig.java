@@ -55,14 +55,30 @@ public class WebOAuthSecurityConfig {
                 .requestMatchers("/api/**").authenticated()
                 .anyRequest().permitAll();
 
+//        http.oauth2Login()
+//                .loginPage("/login")
+//                .authorizationEndpoint()
+//                .authorizationRequestRepository(oAuth2AuthorizationRequestBasedOnCookieRepository())
+//                .and()
+//                .successHandler(oAuth2SuccessHandler())
+//                .userInfoEndpoint()
+//                .userService(oAuth2UserCustomService);
+
         http.oauth2Login()
                 .loginPage("/login")
                 .authorizationEndpoint()
-                .authorizationRequestRepository(oAuth2AuthorizationRequestBasedOnCookieRepository())
+                .baseUri("/oauth2/authorize")
+//                .authorizationRequestRepository(cookieAuthorizationRequestRepository())
                 .and()
-                .successHandler(oAuth2SuccessHandler())
+                .redirectionEndpoint()
+                .baseUri("/oauth2/callback/*")
+                .and()
                 .userInfoEndpoint()
-                .userService(oAuth2UserCustomService);
+//                .userService(customOAuth2UserService)
+                .and()
+                .successHandler(oAuth2SuccessHandler());
+//                .successHandler(oAuth2AuthenticationSuccessHandler)
+//                .failureHandler(oAuth2AuthenticationFailureHandler);
 
         http.logout()
                 .logoutSuccessUrl("/login");

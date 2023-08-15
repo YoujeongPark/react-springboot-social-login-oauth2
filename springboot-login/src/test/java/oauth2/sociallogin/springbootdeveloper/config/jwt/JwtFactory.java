@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.Builder;
 import lombok.Getter;
+import oauth2.sociallogin.springbootdeveloper.config.jwt.JwtProperties;
 
 import java.time.Duration;
 import java.util.Date;
